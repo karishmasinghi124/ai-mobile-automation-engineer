@@ -1,8 +1,30 @@
-anthropic>=0.25.0
-streamlit>=1.35.0
-langgraph>=0.1.0
-langchain-anthropic>=0.1.0
-langchain-core>=0.2.0
-python-dotenv>=1.0.0
-requests>=2.31.0
-pydantic>=2.0.0
+# Sample Mobile App Requirements — Login & Onboarding Module
+
+## Feature: User Authentication
+
+### FR-001: Login with Email & Password
+- Users must be able to log in with a registered email and password
+- Login attempt should fail gracefully with a clear error message for invalid credentials
+- After 5 failed attempts, the account should be temporarily locked for 15 minutes
+- A "Forgot Password" link must be visible on the login screen
+
+### FR-002: Social Login (OAuth)
+- Support login via Google and Apple accounts
+- On first social login, the app should create a new user profile automatically
+- If an email already exists, link the social account to the existing profile
+
+### FR-003: Session Management
+- Sessions should persist for 30 days unless manually logged out
+- Biometric re-authentication (Face ID / Fingerprint) should be offered after 24 hours
+- Concurrent session limit: 3 devices maximum
+
+### FR-004: Onboarding Flow (New Users)
+- After first login, display a 3-step onboarding carousel (skip button visible on each step)
+- Step 1: Feature highlights
+- Step 2: Notification permission prompt
+- Step 3: Profile setup (optional, can be skipped)
+
+## Non-Functional Requirements
+- Login screen must load within 2 seconds on a 4G connection
+- All API calls must use HTTPS with certificate pinning
+- WCAG 2.1 AA accessibility compliance required
